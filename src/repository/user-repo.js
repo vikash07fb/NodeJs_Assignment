@@ -12,6 +12,7 @@ class UserRepository {
             data.password=encryptedPassword;
             let chuser = await User.findOne({ email: data.email });
             if (chuser) {
+
                  throw({ error: "Sorry a user with this email already exists" });
             }
 
@@ -27,6 +28,8 @@ class UserRepository {
             // console.log(user);
             return user;
         } catch (error) {
+            console.log(error);
+
             console.log("Something went wrong repo layer");
             throw error;
         }

@@ -14,12 +14,12 @@ class UserService {
         const { name, email, password } = data;
         const user = await this.userRepository.CreateUser(data);
 
-        console.log(user.email);
+        // console.log(user.email);
         const accesToken = await this.generateAccessToken({ email });
         const refreshToken = await this.generateRefreshToken({ email });
 
-        console.log(accesToken);
-        console.log(refreshToken);
+        // console.log(accesToken);
+        // console.log(refreshToken);
 
         return { accesToken, refreshToken };
 

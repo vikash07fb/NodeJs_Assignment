@@ -11,6 +11,7 @@ const validateSignin = async function(req,res,next){
             err : "Someting missing in the credintals"
         })
     }
+   
     if (!emailRegex.test(req.body.email)) {
         return res.status(400).json({
             success: false,

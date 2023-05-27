@@ -18,7 +18,15 @@ const validateSignup = async function(req,res,next){
             err : "Wrong email format"
         })
     }
-
+    let password= req.body.password;
+    if(password.length<=3)
+    {
+        return res.status(400).json({
+            success: false,
+            message : "Lenght of the password must be greater tha 3 ",
+            err : "Validation Error"
+        })
+    }
     next();
 }
 
