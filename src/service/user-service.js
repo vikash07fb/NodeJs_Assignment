@@ -27,7 +27,7 @@ class UserService {
 
     async signin(data) {
         try {
-            console.log(data);
+            // console.log(data);
             const { name, email, password } = data;
             const user = await this.userRepository.getByEmail({ email });
 

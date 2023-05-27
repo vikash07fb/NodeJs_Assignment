@@ -10,10 +10,10 @@ class UserRepository {
             // console.log(data);
             const encryptedPassword = bcrypt.hashSync(data.password,SALT);
             data.password=encryptedPassword;
-            // let user = await User.findOne({ email: req.body.email });
-            // if (user) {
-            //      throw({ error: "Sorry a user with this email already exists" });
-            // }
+            let chuser = await User.findOne({ email: data.email });
+            if (chuser) {
+                 throw({ error: "Sorry a user with this email already exists" });
+            }
 
             // console.log(data.password);
             const name = data.name;
@@ -37,6 +37,11 @@ class UserRepository {
         try {
             console.log({email});
             const user =await User.findOne({email});
+            // console.log(user);
+            if(user==null)
+            {
+                throw({error: "User with this email id doesnot exists"});
+            }
 
             return user ;
         } catch (error) {
